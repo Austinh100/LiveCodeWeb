@@ -21,7 +21,7 @@ class Course extends CI_Controller
         
         function manage() {
             
-            
+            $this->load->view('manageCourse', $data);
         }
         
         function create() {
