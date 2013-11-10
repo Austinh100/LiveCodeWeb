@@ -2,8 +2,6 @@
 
 class Api extends CI_Controller
 {
-    function hashIT($toHash) {
-        
-        
-    }
+    
+
 }

@@ -23,6 +23,11 @@ class Users extends CI_Model
 		$this->table_name			= $ci->config->item('db_table_prefix', 'tank_auth').$this->table_name;
 		$this->profile_table_name	= $ci->config->item('db_table_prefix', 'tank_auth').$this->profile_table_name;
 	}
+        
+        function UpdateProfileInfo ($userID, $firstname, $lastname)
+        {
+            return $this->db->update('user_profiles', array('firstname'=>$firstname, 'lastname'=>$lastname), array('user_id' => $userID)); 
+        }
 
 	/**
 	 * Get user record by Id

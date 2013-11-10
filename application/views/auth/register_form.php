@@ -15,6 +15,20 @@ $email = array(
 	'maxlength'	=> 80,
 	'size'	=> 30,
 );
+$firstName = array(
+	'name'	=> 'firstname',
+	'id'	=> 'firstname',
+	'value'	=> set_value('firstname'),
+	'maxlength'	=> 80,
+	'size'	=> 30,
+);
+$lastName = array(
+	'name'	=> 'lastname',
+	'id'	=> 'lastname',
+	'value'	=> set_value('lastname'),
+	'maxlength'	=> 80,
+	'size'	=> 30,
+);
 $password = array(
 	'name'	=> 'password',
 	'id'	=> 'password',
@@ -44,6 +58,16 @@ $captcha = array(
 		<td style="color: red;"><?php echo form_error($username['name']); ?><?php echo isset($errors[$username['name']])?$errors[$username['name']]:''; ?></td>
 	</tr>
 	<?php } ?>
+        <tr>
+		<td><?php echo form_label('First Name', $firstName['id']); ?></td>
+		<td><?php echo form_input($firstName); ?></td>
+		<td style="color: red;"><?php echo form_error($firstName['name']); ?><?php echo isset($errors[$firstName['name']])?$errors[$firstName['name']]:''; ?></td>
+	</tr>
+        <tr>
+		<td><?php echo form_label('Last Name', $firstName['id']); ?></td>
+		<td><?php echo form_input($lastName); ?></td>
+		<td style="color: red;"><?php echo form_error($lastName['name']); ?><?php echo isset($errors[$lastName['name']])?$errors[$lastName['name']]:''; ?></td>
+	</tr>
 	<tr>
 		<td><?php echo form_label('Email Address', $email['id']); ?></td>
 		<td><?php echo form_input($email); ?></td>

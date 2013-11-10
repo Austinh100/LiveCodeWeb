@@ -146,12 +146,17 @@ class Auth extends CI_Controller
 
 			$email_activation = $this->config->item('email_activation', 'tank_auth');
 
+                        $this->form_validation->set_rules('firstname', 'firstname', 'trim|required|xss_clean');
+                        $this->form_validation->set_rules('lastname', 'lastname', 'trim|required|xss_clean');
+                        
 			if ($this->form_validation->run()) {								// validation ok
+                                $userInfo["firstname"] = $this->form_validation->set_value("firstname");
+                                $userInfo["lastname"]  = $this->form_validation->set_value("lastname");
 				if (!is_null($data = $this->tank_auth->create_user(
 						$use_username ? $this->form_validation->set_value('username') : '',
 						$this->form_validation->set_value('email'),
 						$this->form_validation->set_value('password'),
-						$email_activation))) {									// success
+						$email_activation,$userInfo))) {									// success
 
 					$data['site_name'] = $this->config->item('website_name', 'tank_auth');
 

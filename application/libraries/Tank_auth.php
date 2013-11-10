@@ -159,7 +159,7 @@ class Tank_auth
 	 * @param	bool
 	 * @return	array
 	 */
-	function create_user($username, $email, $password, $email_activation)
+	function create_user($username, $email, $password, $email_activation, $userInfo)
 	{
 		if ((strlen($username) > 0) AND !$this->ci->users->is_username_available($username)) {
 			$this->error = array('username' => 'auth_username_in_use');
@@ -187,6 +187,7 @@ class Tank_auth
 			if (!is_null($res = $this->ci->users->create_user($data, !$email_activation))) {
 				$data['user_id'] = $res['user_id'];
 				$data['password'] = $password;
+                                $this->ci->users->UpdateProfileInfo($data['user_id'],$userInfo["firstname"],$userInfo["lastname"]);
 				unset($data['last_ip']);
 				return $data;
 			}
